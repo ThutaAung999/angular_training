@@ -1,0 +1,9 @@
+ng generate component components/HelloWorld
+ng g c components/EventDemo
+
+ng generate directive name
+ng g class models/Movie --type=model
+ng generate service services/DummyMovie
+
+ng generate interface models/AnalyticsImplementation
+

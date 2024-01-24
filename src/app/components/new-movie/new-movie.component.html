@@ -1,0 +1,73 @@
+<div class="border border-primary-subtle p-3 m-3">
+  <form (ngSubmit)="onSubmit()" [formGroup]="movieForm">
+
+    <!--For Name-->
+    <div class="mb-3">
+      <label class="form-label" for="name">Name</label>
+      <input [ngClass]="{'is-invalid':name?.touched && name?.invalid}" class="form-control" formControlName="name" id="name"
+             placeholder="User Name"
+             type="text"
+      >
+
+      <div
+        *ngIf="form['name'].invalid && (form['name'].dirty || form['name'].touched)"
+        class="alert alert-danger"
+      >
+      <!--<div *ngIf="form['name'].touched &&
+this.movieForm.controls['name'].invalid" class="alert alert-danger">-->
+        <!--        <div *ngIf="form['name'].errors?.['required']"> Full Name is required.</div>-->
+        <span *ngIf="name?.errors?.['required']"> Name is required.</span>
+        <span *ngIf="form['name'].errors?.['minlength']">
+          Name must be at least 5 characters.
+        </span>
+        <span *ngIf="form['name'].errors?.['pattern']">name must be letters </span>
+        <span *ngIf="form['name'].errors?.['muststartwithcapital']">firs letter is capital </span>
+      </div>
+
+    </div>
+
+    <!--For director-->
+    <div class="mb-3">
+      <label class="form-label" for="director">Director</label>
+      <input class="form-control" formControlName="director" id="director" type="text"
+      [ngClass]="{'is-invalid':form['director'].touched && form['director'].invalid }">
+
+      <div
+        *ngIf="form['director'].invalid && (form['director'].dirty || form['director'].touched)"
+        class="alert alert-danger"
+      >
+         <span *ngIf="form['director'].errors?.['required']"> Director is required.</span>
+
+      </div>
+
+    </div>
+
+    <!--For year-->
+    <div class="mb-3">
+      <label class="form-label" for="year">Year</label>
+      <input class="form-control" formControlName="year" id="year" type="text"
+      [ngClass]="{'is-invalid':form['year'].touched && form['year'].invalid}"
+      >
+
+      <div
+        *ngIf="form['year'].invalid && (form['year'].dirty || form['year'].touched)"
+        class="alert alert-danger"
+      >
+        <span *ngIf="form['year'].errors?.['required']">Year is required</span>
+        <span *ngIf="form['year'].errors?.['pattern']">Year must be 4 digits</span>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="genre">Genre</label>
+      <select class="form-select" formControlName="genre" id="genre">
+        <option selected>Choose genre...</option>
+        <option *ngFor="let genre of  genres">{{genre}}</option>
+      </select>
+    </div>
+
+    <div>
+      <button [disabled]="!movieForm.valid" class="btn btn-primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>

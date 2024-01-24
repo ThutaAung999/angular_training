@@ -1,0 +1,6 @@
+<app-to-do-count></app-to-do-count>
+
+<app-add-new-todo #child [childTodoItem]="parentTodoItem">
+</app-add-new-todo>
+
+<todo-list-view (editEvent)="onTodoEditHandler($event)"></todo-list-view>

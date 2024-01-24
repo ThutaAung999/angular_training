@@ -1,0 +1,9 @@
+<div>
+  <label for="item-input">Todo:</label>
+  <input #newItem id="item-input" type="text">
+  <button (click)="addToDo(newItem.value)" type="button">Add</button>
+
+  <div>
+    <app-to-do *ngFor="let todo of list" [item]="todo"> </app-to-do>
+  </div>
+</div>

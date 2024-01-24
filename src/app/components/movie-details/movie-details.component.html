@@ -1,0 +1,38 @@
+<div class="movie-container">
+  <div class="movie-title">
+    {{movieDetails?.title}}
+  </div>
+  <div class="movie-box">
+    Year:{{movieDetails?.year}}
+  </div>
+
+  <div class="movie-box">
+    Genres:
+    <div *ngFor="let genre of movieDetails?.genres" class="ms-4">
+      {{genre}}
+    </div>
+  </div>
+
+  <div class="movie-box">
+    Directors:
+    <div *ngFor="let director of movieDetails?.directors" class="ms-4">
+      {{director?.name}}
+    </div>
+  </div>
+
+
+  <div class="movie-box">
+    Actors:
+    <div *ngFor="let actor of movieDetails?.actors"  class="ms-4">
+      {{actor?.name}}
+    </div>
+  </div>
+
+  <div class="movie-box">
+    Reviewers:
+    <div *ngFor="let review of movieDetails?.reviewers" class="ms-4">
+      {{review?.rating}}
+    </div>
+
+  </div>
+</div>

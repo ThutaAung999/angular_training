@@ -1,0 +1,39 @@
+<div>
+  <h1>Template-driven Form Example</h1>
+  <form #myForm="ngForm" (ngSubmit)="onSubmitTemplateBased(myForm.value)">
+    <p>
+      <label>First Name:</label>
+      <input #firstName="ngModel"
+             [ngClass]="{'is-invalid':firstName?.touched && firstName?.invalid}"
+             [(ngModel)]="user.firstName"
+             class="form-control" name="firstName"
+             type="text"
+
+             required
+             minlength="4"
+             maxlength="10"
+      >
+    </p>
+    <div
+      *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+      class="alert alert-danger">
+        <div *ngIf="firstName.errors?.['required']">Name is required.</div>
+        <div *ngIf="firstName.errors?.['minlength']">
+          Name must be at least 4 characters long.
+        </div>
+    </div>
+    <p>
+
+      <label>Password:</label>
+      <input [(ngModel)]="user.password"
+             class="form-control"
+             name="password" required
+             type="password">
+    </p>
+    <p>
+      <button [disabled]="!myForm.valid" class="btn btn-primary"
+              type="submit">Submit
+      </button>
+    </p>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+<form [formGroup]="totalForm">
+  <p>
+    <label>Price:</label>
+    <input type="text" formControlName="price" class="form-control">
+  </p>
+  <p>
+    <label>Quantity:</label>
+    <input type="text" formControlName="quantity" class="form-control">
+  </p>
+  <p>Total :</p> {{total}}
+</form>

@@ -1,0 +1,17 @@
+<div>
+  <button type="button" class="btn btn-primary">New Movie</button>
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr app-movie-two *ngFor="let movie of movies" [movie]="movie" >
+    </tr>
+    </tbody>
+  </table>
+</div>

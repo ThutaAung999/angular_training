@@ -1,0 +1,24 @@
+
+{{messageFromChild}}
+<br>
+<br>
+<button   type="button"
+          class="btn btn-primary" (click)="addMovieHandler()">Add Movie</button>
+
+<div *ngIf="movies.length>0;then moviesList else noData"></div>
+
+<ng-template #moviesList>
+  <h2>Movie List</h2>
+  <h3 *ngFor="let movie of movies;index as i">
+      <app-movie (deleteMovie)="onChildMovieDelete($event)"
+                 [movie]="movie">
+      </app-movie>
+  </h3>
+</ng-template>
+
+<ng-template #noData>
+  <p style="color: red;">There is no data to fetch from database .</p>
+</ng-template>
+
+
+

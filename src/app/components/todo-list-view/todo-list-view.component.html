@@ -1,0 +1,21 @@
+<h3>To do list</h3>
+<div>
+  <table class="table table-bordered">
+    <thead>
+    <th>Name</th>
+    <th>Completed</th>
+    <th>Action</th>
+    </thead>
+
+    <tbody>
+    <tr
+      app-table-child
+      *ngFor="let todo of todos"
+      [todo]="todo"
+      (deleteEvent)="onTodoDeleteEvent($event)"
+      (editEvent)="onTodoEditEvent($event)">
+
+    ></tr>
+    </tbody>
+  </table>
+</div>
