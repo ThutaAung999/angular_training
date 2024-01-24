@@ -40,11 +40,12 @@ import { LoginComponent } from './page/login/login.component';
 import { TodoDetailsPageComponent } from './page/todo-details-page/todo-details-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AddNewTodoComponent } from './page/add-new-todo/add-new-todo.component';
+import { AddNewTodoComponent } from './components/add-new-todo/add-new-todo.component';
 import { MovieListComponent } from './page/movie-list/movie-list.component';
 import { MovieTwoComponent } from './components/movie-two/movie-two.component';
 import { MovieDetailComponent } from './page/movie-detail/movie-detail.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { AddNewMovieComponent } from './components/add-new-movie/add-new-movie.component';
 
 
 
@@ -85,6 +86,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     MovieTwoComponent,
     MovieDetailComponent,
     MovieDetailsComponent,
+    AddNewMovieComponent,
 
 
   ],

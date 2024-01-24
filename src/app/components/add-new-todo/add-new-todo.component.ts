@@ -18,17 +18,15 @@ export class AddNewTodoComponent {
 
 
   @ViewChild(TemplateRef<any>) content!: TemplateRef<any>;
+  private modalService = inject(NgbModal)
+  private modalRef?:NgbModalRef;
+  closeResult = '';
 
 
   todoForm: FormGroup;
 
   //todoItem!: ToDoItem;
 
-  private modalService = inject(NgbModal)
-
-  private modalRef?:NgbModalRef;
-
-  closeResult = '';
 
   constructor(private fb:FormBuilder,
               private todoBackendService: ToDoService) {
@@ -73,9 +71,7 @@ export class AddNewTodoComponent {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       },
     );
-
   }
-
 
   private getDismissReason(reason: any): string {
     switch (reason) {
@@ -88,7 +84,7 @@ export class AddNewTodoComponent {
     }
   }
 
-  onSubmit(){
+    onSubmit(){
 
     console.log('Inside onsubmit');
    // this.modalRef?.close("Close");
@@ -103,8 +99,6 @@ export class AddNewTodoComponent {
     else{
       this.todoBackendService.addNewTodo(this.childTodoItem);
     }
-
-
 
     this.todoForm.reset();
   }

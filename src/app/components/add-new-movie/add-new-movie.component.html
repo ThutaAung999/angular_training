@@ -1,0 +1,69 @@
+<button (click)="showNewMovieModal(content)"
+  class="btn btn-lg btn-outline-primary" type="button">New Movie</button>
+
+<!-- Movie Input DialogBox -->
+<ng-template #content let-modal>
+  <form (ngSubmit)="onSubmit()" [formGroup]="movieForm">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Movie</h4>
+      <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="mb-3">
+        <label class="form-label" for="todoTitle">Movie Title</label>
+
+        <input
+          [ngClass]="{'is-invalid':form['title']?.invalid && (form['title']?.dirty || form['title']?.touched)}"
+          class="form-control"
+          formControlName="title"
+          id="todoTitle"
+          placeholder="Movie Title"
+          type="text">
+
+        <div
+          *ngIf="form['title']?.invalid && (form['title']?.dirty || form['title']?.touched)"
+          class="alert alert-danger"
+        >
+          <span *ngIf="form['title']?.errors?.['required']"> Title is required.</span>
+
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label" for="todoTitle">Year </label>
+
+        <input
+          [ngClass]="{'is-invalid':form['year']?.invalid && (form['year']?.dirty || form['year']?.touched)}"
+          class="form-control"
+          formControlName="year"
+          id="todoTitle"
+          placeholder="Year"
+          type="text">
+
+        <div
+          *ngIf="form['year']?.invalid && (form['year']?.dirty || form['year']?.touched)"
+          class="alert alert-danger"
+        >
+          <span *ngIf="form['year']?.errors?.['required']"> Year is required.</span>
+
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div class="modal-footer">
+      <button (click)="modal.close('Save/Update click')"
+              [disabled]="!movieForm.valid"
+              class="btn btn-outline-success pe-2"
+              type="submit">
+        Save
+      </button>
+      <button (click)="modal.close('Cancel click')" class="btn btn-outline-secondary" type="button">Cancel</button>
+    </div>
+  </form>
+</ng-template>
