@@ -5,6 +5,7 @@ import {ToDoService} from "../../services/to-do.service";
 import {MovieService} from "../../services/movie.service";
 import {MovieDto} from "../../dto/movie-dto.model";
 import {ToDoItem} from "../../model/to-do-item.model";
+import {IDropdownSettings} from 'ng-multiselect-dropdown'
 
 @Component({
   selector: 'app-add-new-movie',
@@ -18,7 +19,6 @@ export class AddNewMovieComponent {
 
   //editMode!:boolean;
 
-
   @ViewChild(TemplateRef<any>) content!: TemplateRef<any>;
   private modalService = inject(NgbModal)
   private modalRef?: NgbModalRef;
@@ -29,24 +29,70 @@ export class AddNewMovieComponent {
   movies:Array<MovieDto>=[];
 
 
+  //for ng-multiselect-dropdown
+  dropdownGenreList:Array<string> = [];
+  selectedGenreItems:Array<string> = [];
+  dropdownSettings :IDropdownSettings = {};
+
+
+
 
   constructor(private fb: FormBuilder,
               private movieService: MovieService) {
 
     this.movieForm = this.fb.group({
-      title:['',Validators.required],
-      year:[0,Validators.required],
-      /*geners:[
-          [''],
-        Validators.required]*/
+      title:['',[Validators.required]],
+      year:[0,[Validators.required]],
+      genres:['',[Validators.required]],
+     /* actors:['',Validators.required],
+      directors:['',Validators.required],*/
 
     });
     this.movieService.movies.subscribe(movies => {
       this.movies = movies;
-      console.log(this.movies);
+      console.log("Movies  :",this.movies);
     })
   }
 
+
+  ngOnInit(): void {
+
+    //for ng-multiselect-dropdown
+    this.dropdownGenreList = [
+        'Action' ,
+      'Drama' ,
+      'Horror' ,
+       'Romance' ,
+      'Thriller' ,
+      'Western' ,
+      'Comedy' ,
+       'Comedy genre' ,
+       'Science fiction' ,
+       'Movie genres' ,
+    ];
+    this.selectedGenreItems = [
+      /*{ item_id: 3, item_text: 'Pune' },
+      { item_id: 4, item_text: 'Navsari' }*/
+    ];
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      /*idField: 'id',*/
+      /*textField: 'item_text',*/
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      limitSelection: -1,
+      maxHeight: 200,
+      itemsShowLimit: 3,
+
+      allowSearchFilter: true,
+      clearSearchFilter: true,
+      closeDropDownOnSelection: false,
+      showSelectedItemsAtTop: false,
+      defaultOpen: false,
+    };
+
+  }
 
 
   showNewMovieModal(content:TemplateRef<any>) {
@@ -123,4 +169,26 @@ export class AddNewMovieComponent {
     return this.movieForm.controls;
   }
 
+  ////for ng-multiselect-dropdown
+
+  public onFilterChange(item: any) {
+    console.log(item);
+  }
+  public onDropDownClose(item: any) {
+    console.log(item);
+  }
+
+  public onItemSelect(item: any) {
+    console.log(item);
+  }
+  public onDeSelect(item: any) {
+    console.log(item);
+  }
+
+  public onSelectAll(items: any) {
+    console.log(items);
+  }
+  public onDeSelectAll(items: any) {
+    console.log(items);
+  }
 }

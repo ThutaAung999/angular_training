@@ -1,5 +1,6 @@
 <button (click)="showNewMovieModal(content)"
-  class="btn btn-lg btn-outline-primary" type="button">New Movie</button>
+        class="btn btn-lg btn-outline-primary" type="button">New Movie
+</button>
 
 <!-- Movie Input DialogBox -->
 <ng-template #content let-modal>
@@ -53,6 +54,46 @@
       </div>
 
 
+      <div class="mb-3">
+        <label class="form-label" for="todoTitle">Genre </label>
+
+        <!--
+                <select
+                  [ngClass]="{'is-invalid':form['genres']?.invalid && (form['genres']?.dirty || form['genres']?.touched)}"
+                  class="form-control"
+                  formControlName="genres"
+                  id="todoTitle"
+                  placeholder="Enter Genres"
+                  type="text">
+
+                  <option selected>Open this select menu</option>
+                  <option value="1">Action</option>
+                  <option value="2">Drama</option>
+                  <option value="3">Science</option>
+
+                <div
+                  *ngIf="form['year']?.invalid && (form['year']?.dirty || form['year']?.touched)"
+                  class="alert alert-danger"
+                >
+                  <span *ngIf="form['year']?.errors?.['required']"> Year is required.</span>
+
+                </div>
+
+
+                </select>
+        -->
+        <ng-multiselect-dropdown #multiSelect
+                                 [settings]="dropdownSettings"
+                                 (onSelect)="onItemSelect($event)"
+                                 [data]="dropdownGenreList"
+                                 [placeholder]="'Select Genres'"
+                                  [(ngModel)]="selectedGenreItems"
+                                 formControlName="genres"
+        >
+        </ng-multiselect-dropdown>
+
+      </div>
+
 
     </div>
 
@@ -67,3 +108,5 @@
     </div>
   </form>
 </ng-template>
+
+

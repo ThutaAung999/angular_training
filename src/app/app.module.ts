@@ -46,11 +46,14 @@ import { MovieTwoComponent } from './components/movie-two/movie-two.component';
 import { MovieDetailComponent } from './page/movie-detail/movie-detail.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { AddNewMovieComponent } from './components/add-new-movie/add-new-movie.component';
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
+import {FocusOnClickDirective} from "./components/add-new-movie/focus-on-clicl.directive";
 
 
 
 @NgModule({
   declarations: [
+    FocusOnClickDirective,
     AppComponent,
     HelloWorldComponent,
     EventDemoComponent,
@@ -100,6 +103,8 @@ import { AddNewMovieComponent } from './components/add-new-movie/add-new-movie.c
     StandaloneComponentComponent,
     NgbModule,
     BrowserAnimationsModule,
+    NgMultiSelectDropDownModule,
+
   ],
   providers: [
     {
