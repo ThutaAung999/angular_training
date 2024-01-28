@@ -26,7 +26,7 @@ export class DirectorService {
   loadAllDirectors() {
     this.getAllDirectors().subscribe(data => {
       this.directorStore = data;
-      this._actors.next(this.directorStore);
+      this._directors.next(this.directorStore);
     })
   }
 

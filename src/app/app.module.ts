@@ -103,7 +103,7 @@ import {FocusOnClickDirective} from "./components/add-new-movie/focus-on-clicl.d
     StandaloneComponentComponent,
     NgbModule,
     BrowserAnimationsModule,
-    NgMultiSelectDropDownModule,
+    NgMultiSelectDropDownModule.forRoot(),
 
   ],
   providers: [

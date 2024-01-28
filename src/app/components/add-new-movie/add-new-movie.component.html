@@ -4,7 +4,7 @@
 
 <!-- Movie Input DialogBox -->
 <ng-template #content let-modal>
-  <form (ngSubmit)="onSubmit()" [formGroup]="movieForm">
+  <form (ngSubmit)="onSubmit()" [formGroup]="movieForm" (reset)="resetForm()">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">New Movie</h4>
       <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
@@ -57,31 +57,6 @@
       <div class="mb-3">
         <label class="form-label" for="todoTitle">Genre </label>
 
-        <!--
-                <select
-                  [ngClass]="{'is-invalid':form['genres']?.invalid && (form['genres']?.dirty || form['genres']?.touched)}"
-                  class="form-control"
-                  formControlName="genres"
-                  id="todoTitle"
-                  placeholder="Enter Genres"
-                  type="text">
-
-                  <option selected>Open this select menu</option>
-                  <option value="1">Action</option>
-                  <option value="2">Drama</option>
-                  <option value="3">Science</option>
-
-                <div
-                  *ngIf="form['year']?.invalid && (form['year']?.dirty || form['year']?.touched)"
-                  class="alert alert-danger"
-                >
-                  <span *ngIf="form['year']?.errors?.['required']"> Year is required.</span>
-
-                </div>
-
-
-                </select>
-        -->
         <ng-multiselect-dropdown #multiSelect
                                  [settings]="dropdownSettings"
                                  (onSelect)="onItemSelect($event)"
@@ -95,6 +70,40 @@
       </div>
 
 
+
+      <div class="mb-3">
+        <label class="form-label" for="todoTitle">Actors </label>
+
+
+        <ng-multiselect-dropdown #multiSelectForActors
+                                 [settings]="dropdownSettingsForDirectorsAndActors"
+                                 (onSelect)="onItemSelect($event)"
+                                 [data]="actors1"
+                                 [placeholder]="'Select Actor'"
+                                 [(ngModel)]="selectedActors1"
+                                 formControlName="actors"
+        >
+        </ng-multiselect-dropdown>
+
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label" for="todoTitle">Directors </label>
+
+
+        <ng-multiselect-dropdown #multiSelectForDirectors
+                                 [settings]="dropdownSettingsForDirectorsAndActors"
+                                 (onSelect)="onItemSelect($event)"
+                                 [data]="directors1"
+                                 [placeholder]="'Select Director'"
+                                 [(ngModel)]="selectedDirectors1"
+                                 formControlName="directors"
+        >
+        </ng-multiselect-dropdown>
+
+      </div>
+
     </div>
 
     <div class="modal-footer">
@@ -104,7 +113,8 @@
               type="submit">
         Save
       </button>
-      <button (click)="modal.close('Cancel click')" class="btn btn-outline-secondary" type="button">Cancel</button>
+      <!--<button (click)="modal.close('Cancel click')" class="btn btn-outline-secondary" type="button">Cancel</button>-->
+      <button (click)="close(modal)" class="btn btn-outline-secondary" type="button">Cancel</button>
     </div>
   </form>
 </ng-template>

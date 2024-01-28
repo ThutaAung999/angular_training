@@ -43,4 +43,12 @@ export class MovieService {
   }
   /*************************/
 
+  addNewMovie(movie: MovieDetails) {
+
+    return this.http.post<MovieDetails>(API_URL,movie).subscribe(data => {
+      this.movieStore.unshift(data);
+      this._movies.next(this.movieStore);
+    })
+  }
+
 }

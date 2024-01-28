@@ -69,17 +69,20 @@ export class AddNewTodoComponent {
       },
       (reason) => {// x နဲ့ ပိတ်ရင် လုပ်မဲ့ဟာ
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        console.log("Test");//
       },
     );
   }
 
   private getDismissReason(reason: any): string {
+
     switch (reason) {
       case ModalDismissReasons.ESC:
         return 'by pressing ESC';
       case ModalDismissReasons.BACKDROP_CLICK:
         return 'by clicking on a backdrop';
       default:
+
         return `with: ${reason}`;
     }
   }
