@@ -1,38 +1,59 @@
 <div class="movie-container">
-  <div class="movie-title">
-    {{movieDetails?.title}}
-  </div>
-  <div class="movie-box">
-    Year:{{movieDetails?.year}}
-  </div>
 
-  <div class="movie-box">
-    Genres:
-    <div *ngFor="let genre of movieDetails?.genres" class="ms-4">
-      {{genre}}
+  <div *ngIf="movieDetails">
+    <div class="movie-title">
+      {{movieDetails?.title}}
     </div>
-  </div>
-
-  <div class="movie-box">
-    Directors:
-    <div *ngFor="let director of movieDetails?.directors" class="ms-4">
-      {{director?.name}}
-    </div>
-  </div>
-
-
-  <div class="movie-box">
-    Actors:
-    <div *ngFor="let actor of movieDetails?.actors"  class="ms-4">
-      {{actor?.name}}
-    </div>
-  </div>
-
-  <div class="movie-box">
-    Reviewers:
-    <div *ngFor="let review of movieDetails?.reviewers" class="ms-4">
-      {{review?.rating}}
+    <div class="movie-box">
+      Year :  {{movieDetails?.year}}
     </div>
 
+    <div class="movie-box">
+      <h5>Genres:</h5>
+      <div *ngFor="let genre of movieDetails?.genres" class="ms-4">
+        {{genre}}
+      </div>
+    </div>
+
+    <div class="movie-box">
+      <h5>Directors:</h5>
+      <div *ngFor="let director of movieDetails?.directors" class="ms-4">
+        {{director?.name}}
+      </div>
+    </div>
+
+
+    <div class="movie-box">
+      <h5>Actors:</h5>
+      <div *ngFor="let actor of movieDetails?.actors" class="ms-4">
+        {{actor?.name}}
+      </div>
+    </div>
+
+    <div class="movie-box">
+      <h5>Reviewers and ratings:</h5>
+
+      <!--<div *ngFor="let review of movieDetails?.reviewers" class="ms-4">
+        {{review?.rating}}
+      </div>-->
+
+      <app-review
+        *ngFor="let review of movieDetails.reviewers"
+        [review]="review"
+        class="ms-4">
+      </app-review>
+
+    </div>
+
+    <div class="m-3">
+      <a ariaCurrentWhenActive="page"
+         class="btn btn-primary"
+         role="button"
+         routerLink="/movie-list-page"
+         routerLinkActive="active"><< Back</a>
+    </div>
+
+
   </div>
+
 </div>

@@ -4,7 +4,7 @@
 
 <!-- Movie Input DialogBox -->
 <ng-template #content let-modal>
-  <form (ngSubmit)="onSubmit()" [formGroup]="movieForm" (reset)="resetForm()">
+  <form (ngSubmit)="onSubmit()" (reset)="resetForm()" [formGroup]="movieForm">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">New Movie</h4>
       <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
@@ -58,32 +58,51 @@
         <label class="form-label" for="todoTitle">Genre </label>
 
         <ng-multiselect-dropdown #multiSelect
-                                 [settings]="dropdownSettings"
                                  (onSelect)="onItemSelect($event)"
+                                 [(ngModel)]="selectedGenreItems"
+                                 [settings]="dropdownSettings"
                                  [data]="dropdownGenreList"
                                  [placeholder]="'Select Genres'"
-                                  [(ngModel)]="selectedGenreItems"
+
                                  formControlName="genres"
+
         >
         </ng-multiselect-dropdown>
 
+        <div
+          *ngIf="form['genres']?.touched && (!form['genres']?.value || form['genres']?.value.length==0)"
+          class="alert alert-danger"
+        >
+        <span *ngIf="form['genres']?.errors?.['required']" class="validation">
+            <sup>*</sup>required
+        </span>
+        </div>
+
       </div>
-
-
 
       <div class="mb-3">
         <label class="form-label" for="todoTitle">Actors </label>
 
 
         <ng-multiselect-dropdown #multiSelectForActors
-                                 [settings]="dropdownSettingsForDirectorsAndActors"
                                  (onSelect)="onItemSelect($event)"
+                                 [(ngModel)]="selectedActors1"
+                                 [settings]="dropdownSettingsForDirectorsAndActors"
                                  [data]="actors1"
                                  [placeholder]="'Select Actor'"
-                                 [(ngModel)]="selectedActors1"
+
                                  formControlName="actors"
         >
         </ng-multiselect-dropdown>
+
+        <div
+          *ngIf="form['actors']?.touched && (!form['actors']?.value || form['actors']?.value.length==0)"
+          class="alert alert-danger"
+        >
+        <span *ngIf="form['actors']?.errors?.['required']" class="validation">
+            <sup>*</sup>required
+        </span>
+        </div>
 
       </div>
 
@@ -93,14 +112,24 @@
 
 
         <ng-multiselect-dropdown #multiSelectForDirectors
-                                 [settings]="dropdownSettingsForDirectorsAndActors"
                                  (onSelect)="onItemSelect($event)"
+                                 [(ngModel)]="selectedDirectors1"
+                                 [settings]="dropdownSettingsForDirectorsAndActors"
                                  [data]="directors1"
                                  [placeholder]="'Select Director'"
-                                 [(ngModel)]="selectedDirectors1"
+
                                  formControlName="directors"
         >
         </ng-multiselect-dropdown>
+
+        <div
+          *ngIf="form['directors']?.touched && (!form['directors']?.value || form['directors']?.value.length==0)"
+          class="alert alert-danger"
+        >
+        <span *ngIf="form['directors']?.errors?.['required']" class="validation">
+            <sup>*</sup>required
+        </span>
+        </div>
 
       </div>
 

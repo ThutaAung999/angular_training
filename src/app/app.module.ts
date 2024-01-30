@@ -48,6 +48,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { AddNewMovieComponent } from './components/add-new-movie/add-new-movie.component';
 import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 import {FocusOnClickDirective} from "./components/add-new-movie/focus-on-clicl.directive";
+import { ReviewComponent } from './components/review/review.component';
 
 
 
@@ -90,6 +91,7 @@ import {FocusOnClickDirective} from "./components/add-new-movie/focus-on-clicl.d
     MovieDetailComponent,
     MovieDetailsComponent,
     AddNewMovieComponent,
+    ReviewComponent,
 
 
   ],
