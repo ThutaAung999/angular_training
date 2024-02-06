@@ -17,7 +17,6 @@ export class TodoListPageComponent {
 
   @ViewChild(AddNewTodoComponent) addNewTodo!:AddNewTodoComponent;
 
-
   onTodoEditHandler(todoItem: ToDoItem) {
     this.addNewTodo.editMode=true;
     //console.log("Edit todo  item  within todo-list-page: ", todoItem);

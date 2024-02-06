@@ -16,13 +16,15 @@ import {ActorService} from "../../services/actor.service";
 })
 export class AddNewMovieComponent {
 
+  //for Edit case
   @Input()
   childMovieDto!: MovieDto;
 
   @Input()
   childMovieDetails!: MovieDetails;
 
-  //editMode!:boolean;
+  //for Edit case
+  editMode!:boolean;
 
   @ViewChild(TemplateRef<any>) content!: TemplateRef<any>;
   private modalService = inject(NgbModal)

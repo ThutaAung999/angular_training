@@ -9,7 +9,10 @@
     </thead>
 
     <tbody>
-    <tr *ngFor="let movie of movies" [movie]="movie" app-movie-two>
+    <tr app-movie-two
+      *ngFor="let movie of movies"
+        [movie]="movie"
+        (editEvent)="onMovieEditEvent($event)">
     </tr>
     </tbody>
   </table>
