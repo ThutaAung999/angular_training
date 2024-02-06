@@ -26,7 +26,7 @@ import {NewMovieComponent} from './components/new-movie/new-movie.component';
 import {AnalyticsService} from "./services/analytics.service";
 import {Metric} from "./models/metric";
 import {AnalyticsImplementation} from "./models/analytics-implementation";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ToDoCountComponent } from './components/to-do-count/to-do-count.component';
 import { FirstPageComponent } from './page/first-page/first-page.component';
 import { TodoListPageComponent } from './page/TodoListPage/todo-list-page.component';
@@ -36,7 +36,7 @@ import {StandaloneComponentComponent} from "./standalone-component/standalone-co
 import {ChildAComponent} from "./page/child-a/child-a.component";
 import {ChildBComponent} from "./page/child-b/child-b.component";
 import { AdminPageComponent } from './page/admin-page/admin-page.component';
-import { LoginComponent } from './page/login/login.component';
+import { LoginPageComponent } from './page/login-page/login-page.component';
 import { TodoDetailsPageComponent } from './page/todo-details-page/todo-details-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -49,6 +49,9 @@ import { AddNewMovieComponent } from './components/add-new-movie/add-new-movie.c
 import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 import {FocusOnClickDirective} from "./components/add-new-movie/focus-on-clicl.directive";
 import { ReviewComponent } from './components/review/review.component';
+import {TokenInterceptor} from "./auth/interceptor/token.interceptor";
+import { LogoutComponent } from './page/logout/logout.component';
+
 
 
 
@@ -83,7 +86,7 @@ import { ReviewComponent } from './components/review/review.component';
     ChildAComponent,
     ChildBComponent,
     AdminPageComponent,
-    LoginComponent,
+    LoginPageComponent,
     TodoDetailsPageComponent,
     AddNewTodoComponent,
     MovieListComponent,
@@ -92,6 +95,7 @@ import { ReviewComponent } from './components/review/review.component';
     MovieDetailsComponent,
     AddNewMovieComponent,
     ReviewComponent,
+    LogoutComponent,
 
 
   ],
@@ -129,6 +133,12 @@ import { ReviewComponent } from './components/review/review.component';
       }
     },
 
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
 
   ],
   bootstrap: [AppComponent],

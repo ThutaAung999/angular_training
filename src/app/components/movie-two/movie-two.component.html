@@ -1,8 +1,9 @@
-<td>{{movie.title}}</td>
-<td>{{movie.year}}</td>
-<td>
-  <a href="{{'/movie-details-page/'+movie._id}}" class="btn btn-primary">Details</a>
+  <td>{{movie.title}}</td>
+  <td>{{movie.year}}</td>
+  <td>
 
-  <!--<button class="btn btn-primary" (click)="movieDetails(movie)">Details</button>-->
-</td>
+    <!--<a routerLink="['/movie-details-page', movie._id}}" class="btn btn-primary">Details</a>-->
+
+    <button class="btn btn-primary" (click)="movieDetails(movie)">Details</button>
+  </td>
 

@@ -6,11 +6,12 @@ import {NotFoundPageComponent} from "./page/not-found-page/not-found-page.compon
 import {ChildAComponent} from "./page/child-a/child-a.component";
 import {ChildBComponent} from "./page/child-b/child-b.component";
 import {AdminPageComponent} from "./page/admin-page/admin-page.component";
-import {authGuard} from "./auth/auth.guard";
-import {LoginComponent} from "./page/login/login.component";
+import {AuthGuard} from "./auth/authGuard";
+import {LoginPageComponent} from "./page/login-page/login-page.component";
 import {TodoDetailsPageComponent} from "./page/todo-details-page/todo-details-page.component";
 import {MovieListComponent} from "./page/movie-list/movie-list.component";
 import {MovieDetailComponent} from "./page/movie-detail/movie-detail.component";
+import {LogoutComponent} from "./page/logout/logout.component";
 
 const resolvedChildATitle: ResolveFn<string> = () => Promise.resolve('child a');
 
@@ -36,10 +37,11 @@ const routes: Routes = [
   },
   { path: 'todo-list-page', component: TodoListPageComponent },
   { path: 'another-page',redirectTo:'/first-page',pathMatch:'full'},
-  {path:'admin-page', component:AdminPageComponent,},
-  {path:'login-page', component:LoginComponent},
-  {path:'movie-list-page', component:MovieListComponent,},
-  {path:'movie-details-page/:movieId', component:MovieDetailComponent,},
+  { path: 'admin-page', component: AdminPageComponent,canActivate:[AuthGuard] },
+  {path:'login-page', component:LoginPageComponent},
+  {path:'logout-page', component:LogoutComponent},
+  {path:'movie-list-page', component:MovieListComponent,canActivate:[AuthGuard]},
+  {path:'movie-details-page/:movieId', component:MovieDetailComponent,canActivate:[AuthGuard]},
   {path:'todo-details-page/:todoId', component:TodoDetailsPageComponent},
   {
     path:'home',
