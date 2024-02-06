@@ -51,4 +51,13 @@ export class MovieService {
     })
   }
 
+  updateMovie(movieDetails: MovieDetails) {
+
+    return this.http.put<MovieDetails>(API_URL+ movieDetails._id, movieDetails).subscribe(
+      data => {
+        this.movieStore = this.movieStore.map(ele => ele._id === movieDetails._id ? data : ele);
+        this._movies.next(this.movieStore);
+      })
+  }
+
 }

@@ -1,4 +1,4 @@
-import {Component, inject, Input, TemplateRef, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, Input, TemplateRef, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModalDismissReasons, NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {ToDoService} from "../../services/to-do.service";
@@ -81,6 +81,7 @@ export class AddNewMovieComponent {
               private movieService: MovieService,
               private directorService:DirectorService,
               private actorService:ActorService,
+              private cdr:ChangeDetectorRef,
               ) {
 
     this.setForm();
@@ -200,7 +201,7 @@ export class AddNewMovieComponent {
   showNewMovieModal(content:TemplateRef<any>) {
     this.movieForm.reset();
 
-    //this.editMode=false;
+    this.editMode=false;
 
     this.modalService.open(content);
 
@@ -255,22 +256,24 @@ export class AddNewMovieComponent {
     console.log('Inside onsubmit');
 
     this.childMovieDetails=this.movieForm.value;
-    //for add New movie
-   this.movieService.addNewMovie(this.childMovieDetails)
+    //for add New movie only
+   //this.movieService.addNewMovie(this.childMovieDetails)
 
     //console.log(JSON.stringify(this.childMovieDto));
     console.log(this.childMovieDto);
 
 
-    /*  if(this.editMode){
-        console.log('Edit mode',this.childTodoItem);
-        this.todoBackendService.updateTodo(this.childTodoItem);
+      if(this.editMode){
+        console.log('Edit mode',this.childMovieDto);
+
+        this.movieService.updateMovie(this.childMovieDto as MovieDetails)
+
       }
       else{
-        this.todoBackendService.addNewTodo(this.childTodoItem);
+
+        this.movieService.addNewMovie(this.childMovieDetails)
       }
 
-    */
 
 
 //    this.movieService.addMovie(this.childMovieDto)

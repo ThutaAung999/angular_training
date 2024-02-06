@@ -6,7 +6,7 @@
 <ng-template #content let-modal>
   <form (ngSubmit)="onSubmit()" (reset)="resetForm()" [formGroup]="movieForm">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">New Movie</h4>
+      <h4 class="modal-title" id="modal-basic-title">{{editMode?"Edit Movie":"New  Movie"}}</h4>
       <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
     </div>
 
@@ -139,7 +139,7 @@
               [disabled]="!movieForm.valid"
               class="btn btn-outline-success pe-2"
               type="submit">
-        Save
+        {{!editMode?"Save":"Update"}}
       </button>
       <!--<button (click)="modal.close('Cancel click')" class="btn btn-outline-secondary" type="button">Cancel</button>-->
       <button (click)="close(modal)" class="btn btn-outline-secondary" type="button">Cancel</button>

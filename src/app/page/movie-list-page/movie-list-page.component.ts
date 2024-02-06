@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {MovieService} from "../../services/movie.service";
-import {MovieDto} from "../../dto/movie-dto.model";
+import {MovieDetails, MovieDto} from "../../dto/movie-dto.model";
 import {ToDoItem} from "../../model/to-do-item.model";
 import {AddNewTodoComponent} from "../../components/add-new-todo/add-new-todo.component";
 import {AddNewMovieComponent} from "../../components/add-new-movie/add-new-movie.component";
@@ -14,6 +14,8 @@ export class MovieListPageComponent {
 
   parentMovieDto!: MovieDto;
 
+  parentMovieDetails!:MovieDetails;
+
   @Output()
   editEvent:EventEmitter<MovieDto>=new EventEmitter<MovieDto>();
 
@@ -23,9 +25,11 @@ export class MovieListPageComponent {
       this.addNewMovie.editMode=true;
 
       console.log("Edit movie  within movie-list-page", movieDto);
-      this.parentMovieDto=movieDto;
+      //this.parentMovieDto=movieDto;
+      this.parentMovieDetails=movieDto as MovieDetails;
+
       this.addNewMovie.open(this.addNewMovie.content);
-      this.addNewMovie.movieForm.patchValue({...movieDto})
+      this.addNewMovie.movieForm.patchValue({...this.parentMovieDetails})
 
   }
 }
