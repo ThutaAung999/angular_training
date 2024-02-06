@@ -41,7 +41,7 @@ import { TodoDetailsPageComponent } from './page/todo-details-page/todo-details-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddNewTodoComponent } from './components/add-new-todo/add-new-todo.component';
-import { MovieListComponent } from './page/movie-list/movie-list.component';
+import { MovieListPageComponent } from './page/movie-list-page/movie-list-page.component';
 import { MovieTwoComponent } from './components/movie-two/movie-two.component';
 import { MovieDetailComponent } from './page/movie-detail/movie-detail.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
@@ -51,6 +51,7 @@ import {FocusOnClickDirective} from "./components/add-new-movie/focus-on-clicl.d
 import { ReviewComponent } from './components/review/review.component';
 import {TokenInterceptor} from "./auth/interceptor/token.interceptor";
 import { LogoutComponent } from './page/logout/logout.component';
+import { MovieListViewComponent } from './components/movie-list-view/movie-list-view.component';
 
 
 
@@ -89,13 +90,14 @@ import { LogoutComponent } from './page/logout/logout.component';
     LoginPageComponent,
     TodoDetailsPageComponent,
     AddNewTodoComponent,
-    MovieListComponent,
+    MovieListPageComponent,
     MovieTwoComponent,
     MovieDetailComponent,
     MovieDetailsComponent,
     AddNewMovieComponent,
     ReviewComponent,
     LogoutComponent,
+    MovieListViewComponent,
 
 
   ],

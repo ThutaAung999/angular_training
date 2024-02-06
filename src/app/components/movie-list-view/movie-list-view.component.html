@@ -1,5 +1,4 @@
 <div>
-  <app-add-new-movie></app-add-new-movie>
   <table class="table table-striped table-bordered">
     <thead>
     <tr>
@@ -10,7 +9,7 @@
     </thead>
 
     <tbody>
-    <tr app-movie-two *ngFor="let movie of movies" [movie]="movie" >
+    <tr *ngFor="let movie of movies" [movie]="movie" app-movie-two>
     </tr>
     </tbody>
   </table>

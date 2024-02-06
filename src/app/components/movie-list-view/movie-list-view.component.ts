@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import {MovieService} from "../../services/movie.service";
 import {MovieDto} from "../../dto/movie-dto.model";
+import {MovieService} from "../../services/movie.service";
 
 @Component({
-  selector: 'app-movie-list',
-  templateUrl: './movie-list.component.html',
-  styleUrls: ['./movie-list.component.scss']
+  selector: 'app-movie-list-view',
+  templateUrl: './movie-list-view.component.html',
+  styleUrls: ['./movie-list-view.component.scss']
 })
-export class MovieListComponent {
+export class MovieListViewComponent {
 
   movies: Array<MovieDto> = [];
   constructor(private movieService: MovieService) {

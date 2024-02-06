@@ -9,7 +9,7 @@ import {AdminPageComponent} from "./page/admin-page/admin-page.component";
 import {AuthGuard} from "./auth/authGuard";
 import {LoginPageComponent} from "./page/login-page/login-page.component";
 import {TodoDetailsPageComponent} from "./page/todo-details-page/todo-details-page.component";
-import {MovieListComponent} from "./page/movie-list/movie-list.component";
+import {MovieListPageComponent} from "./page/movie-list-page/movie-list-page.component";
 import {MovieDetailComponent} from "./page/movie-detail/movie-detail.component";
 import {LogoutComponent} from "./page/logout/logout.component";
 
@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'admin-page', component: AdminPageComponent,canActivate:[AuthGuard] },
   {path:'login-page', component:LoginPageComponent},
   {path:'logout-page', component:LogoutComponent},
-  {path:'movie-list-page', component:MovieListComponent,canActivate:[AuthGuard]},
+  {path:'movie-list-page', component:MovieListPageComponent,canActivate:[AuthGuard]},
   {path:'movie-details-page/:movieId', component:MovieDetailComponent,canActivate:[AuthGuard]},
   {path:'todo-details-page/:todoId', component:TodoDetailsPageComponent},
   {

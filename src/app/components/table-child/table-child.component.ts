@@ -25,13 +25,14 @@ export class TableChildComponent {
     this.deleteEvent.emit(this.todo);
   }
 
+  onEditClick(){
+    this.editEvent.emit(this.todo);
+  }
+
   onDetailsClick(){
     console.log("table-child  onDetailsClick method")
     this.router.navigate([`/todo-details-page/${this.todo.id}`])
   }
 
-  onEditClick(){
-    this.editEvent.emit(this.todo);
-  }
 }
 

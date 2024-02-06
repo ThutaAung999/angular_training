@@ -1,6 +1,7 @@
-import {Component, inject, Input} from '@angular/core';
-import {MovieDto} from "../../dto/movie-dto.model";
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import {MovieDetails, MovieDto} from "../../dto/movie-dto.model";
 import {Router} from "@angular/router";
+import {ToDoItem} from "../../model/to-do-item.model";
 
 @Component({
   selector: '[app-movie-two]',
@@ -12,7 +13,26 @@ export class MovieTwoComponent {
   @Input()
   movie!:MovieDto;
 
+  @Output()
+  deleteEvent :EventEmitter<MovieDto>=new EventEmitter<MovieDto>();
+
+  @Output()
+  editEvent :EventEmitter<MovieDto>=new EventEmitter<MovieDto>();
+
+
+
   constructor(private router:Router) {}
+
+
+  onDeleteClick(){
+    console.log('onDeleteClick() is triggered')
+    this.deleteEvent.emit(this.movie);
+  }
+
+  onEditClick(){
+    console.log('onEditClick() is triggered')
+    this.editEvent.emit(this.movie);
+  }
 
   movieDetails(movie:MovieDto){
 

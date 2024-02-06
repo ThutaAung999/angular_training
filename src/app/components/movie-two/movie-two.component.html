@@ -1,9 +1,18 @@
   <td>{{movie.title}}</td>
   <td>{{movie.year}}</td>
-  <td>
 
+  <td>
     <!--<a routerLink="['/movie-details-page', movie._id}}" class="btn btn-primary">Details</a>-->
 
     <button class="btn btn-primary" (click)="movieDetails(movie)">Details</button>
   </td>
 
+  <td>
+    <button type="button" class="btn btn-danger"
+            (click)="onDeleteClick()">Delete</button>
+  </td>
+
+  <td>
+    <button type="button" class="btn btn-secondary"
+            (click)="onEditClick()">Edit</button>
+  </td>
