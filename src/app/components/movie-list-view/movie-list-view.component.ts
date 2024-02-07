@@ -26,6 +26,7 @@ export class MovieListViewComponent {
 
   onMovieEditEvent(movieDto: MovieDto) {
     console.log("Edit movie  within movie-list-view", movieDto);
+    console.log("movie-list-view : ID ::::",movieDto._id)
       this.editEvent.emit(movieDto);
   }
 }

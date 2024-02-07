@@ -20,6 +20,7 @@ export class AddNewMovieComponent {
   @Input()
   childMovieDto!: MovieDto;
 
+  //for new case
   @Input()
   childMovieDetails!: MovieDetails;
 
@@ -88,6 +89,7 @@ export class AddNewMovieComponent {
   }
 
   private setForm(): void {
+
     this.movieForm = this.fb.group({
       title:['',[Validators.required]],
       year:[0,[Validators.required]],
@@ -96,6 +98,7 @@ export class AddNewMovieComponent {
        directors:['',Validators.required],
 
     });
+
 
     this.movieService.movies.subscribe(movies => {
       this.movies = movies;
@@ -175,6 +178,10 @@ export class AddNewMovieComponent {
       defaultOpen: false,
     };
 
+
+
+
+
     //ဒါက  { }[]  ဆိုတဲ့ object array ကို သုံးတဲ့ကောင်
      this.dropdownSettingsForDirectorsAndActors = {
       singleSelection: false,
@@ -192,9 +199,6 @@ export class AddNewMovieComponent {
       showSelectedItemsAtTop: false,
       defaultOpen: false,
     };
-
-
-
   }
 
 
@@ -202,10 +206,10 @@ export class AddNewMovieComponent {
     this.movieForm.reset();
 
     this.editMode=false;
-
     this.modalService.open(content);
 
   }
+
 
 
   open(content: TemplateRef<any>) {
@@ -255,19 +259,24 @@ export class AddNewMovieComponent {
 
     console.log('Inside onsubmit');
 
-    this.childMovieDetails=this.movieForm.value;
+    this.childMovieDetails=this.movieForm.value;//ဒါက  အသစ်ဝင်တာ data ကိုပြ
     //for add New movie only
    //this.movieService.addNewMovie(this.childMovieDetails)
 
     //console.log(JSON.stringify(this.childMovieDto));
-    console.log(this.childMovieDto);
+    console.log("this.childMovieDto",this.childMovieDto);//ဒါက အဟောင်းကြီး
+    console.log("this.childMovieDetails",this.childMovieDetails);//ဒါက  data အသစ်
 
 
       if(this.editMode){
+        
+        this.childMovieDetails._id=this.childMovieDto._id;
+
         console.log('Edit mode',this.childMovieDto);
-
-        this.movieService.updateMovie(this.childMovieDto as MovieDetails)
-
+        console.log("add-new-movie: ID :: this.childMovieDto._id :",this.childMovieDto._id)
+        console.log("add-new-movie: ID ::this.childMovieDetails._id :",this.childMovieDetails._id)
+        //this.movieService.updateMovie(this.childMovieDto as MovieDetails)// ဒါက အဟောင်းကြီး
+        this.movieService.updateMovie(this.childMovieDetails)
       }
       else{
 

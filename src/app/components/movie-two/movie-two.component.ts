@@ -20,7 +20,6 @@ export class MovieTwoComponent {
   editEvent :EventEmitter<MovieDto>=new EventEmitter<MovieDto>();
 
 
-
   constructor(private router:Router) {}
 
 
@@ -31,6 +30,9 @@ export class MovieTwoComponent {
 
   onEditClick(){
     console.log('onEditClick() is triggered')
+
+    console.log("Edit mode: ID ::::",this.movie._id)
+
     this.editEvent.emit(this.movie);
   }
 

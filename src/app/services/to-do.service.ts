@@ -67,6 +67,5 @@ export class ToDoService {
         this.todoDataStore = this.todoDataStore.map(ele => ele.id === todoItem.id ? data : ele);
         this._todos.next(this.todoDataStore);
       })
-
   }
 }

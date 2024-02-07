@@ -85,13 +85,19 @@
 
 
         <ng-multiselect-dropdown #multiSelectForActors
-                                 (onSelect)="onItemSelect($event)"
-                                 [(ngModel)]="selectedActors1"
+
                                  [settings]="dropdownSettingsForDirectorsAndActors"
                                  [data]="actors1"
-                                 [placeholder]="'Select Actor'"
 
                                  formControlName="actors"
+                                 [placeholder]="'Select Actor'"
+
+
+                                 (onSelect)="onItemSelect($event)"
+                                 [(ngModel)]="selectedActors1"
+
+
+
         >
         </ng-multiselect-dropdown>
 

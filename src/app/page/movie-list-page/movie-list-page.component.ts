@@ -21,15 +21,33 @@ export class MovieListPageComponent {
 
   @ViewChild(AddNewMovieComponent) addNewMovie!:AddNewMovieComponent;
 
+
   onMovieEditHandler(movieDto:MovieDto){
+
+
       this.addNewMovie.editMode=true;
 
       console.log("Edit movie  within movie-list-page", movieDto);
-      //this.parentMovieDto=movieDto;
+    console.log("movie-list-page : ID ::::",movieDto._id)
+
+    //movie-two ကပို့ကတည်းက MovieDto  နဲ့ ပို့ခဲ့လို့ MovieDto နဲ့ပြန်ဖမ်းမှ _id ကိုရမယ် ,
+      this.parentMovieDto=movieDto;
+
+
+    //ဒါနဲ့ဆို id မပါလာဘူး
       this.parentMovieDetails=movieDto as MovieDetails;
 
       this.addNewMovie.open(this.addNewMovie.content);
-      this.addNewMovie.movieForm.patchValue({...this.parentMovieDetails})
+//      this.addNewMovie.movieForm.patchValue({...this.parentMovieDetails})
+
+    //update လုပ်ဖို့  form data ထည့်တာ့ အဓိက ဒီနေရမှာပြင်ရမှာ .
+    this.addNewMovie.movieForm.patchValue({
+      title:this.parentMovieDto.title,
+      year:this.parentMovieDto.year,
+      genres:this.parentMovieDto.genres,
+      actors:[this.addNewMovie.selectedActors1],
+      directors:[this.addNewMovie.selectedDirectors1],
+    })
 
   }
 }
