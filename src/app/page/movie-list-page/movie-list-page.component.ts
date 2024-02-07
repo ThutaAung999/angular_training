@@ -25,6 +25,7 @@ export class MovieListPageComponent {
   onMovieEditHandler(movieDto:MovieDto){
 
 
+
       this.addNewMovie.editMode=true;
 
       console.log("Edit movie  within movie-list-page", movieDto);
@@ -33,20 +34,24 @@ export class MovieListPageComponent {
     //movie-two ကပို့ကတည်းက MovieDto  နဲ့ ပို့ခဲ့လို့ MovieDto နဲ့ပြန်ဖမ်းမှ _id ကိုရမယ် ,
       this.parentMovieDto=movieDto;
 
-
     //ဒါနဲ့ဆို id မပါလာဘူး
       this.parentMovieDetails=movieDto as MovieDetails;
+      this.parentMovieDetails._id = movieDto._id;
 
       this.addNewMovie.open(this.addNewMovie.content);
-//      this.addNewMovie.movieForm.patchValue({...this.parentMovieDetails})
+    //this.addNewMovie.movieForm.patchValue({...this.parentMovieDetails})
 
-    //update လုပ်ဖို့  form data ထည့်တာ့ အဓိက ဒီနေရမှာပြင်ရမှာ .
+    console.log('this.parentMovieDetails.genres',this.parentMovieDetails.genres)
+    console.log('this.parentMovieDetails.actors',this.parentMovieDetails.actors)
+    console.log('this.parentMovieDetails.directors',this.parentMovieDetails.directors)
+
+    //ng-multiselect-dropdown အတွက် update လုပ်ဖို့  form data ထည့်တာ့ အဓိက ဒီနေရမှာပြင်ရမှာ .
     this.addNewMovie.movieForm.patchValue({
-      title:this.parentMovieDto.title,
-      year:this.parentMovieDto.year,
-      genres:this.parentMovieDto.genres,
-      actors:[this.addNewMovie.selectedActors1],
-      directors:[this.addNewMovie.selectedDirectors1],
+      title:this.parentMovieDetails.title,
+      year:this.parentMovieDetails.year,
+      genres:[this.parentMovieDetails.genres],
+      actors:[this.parentMovieDetails.actors],
+      directors:[this.parentMovieDetails.directors],
     })
 
   }
