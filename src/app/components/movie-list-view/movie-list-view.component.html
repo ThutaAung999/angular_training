@@ -12,6 +12,7 @@
     <tr app-movie-two
       *ngFor="let movie of movies"
         [movie]="movie"
+        (deleteEvent)="onTodoDeleteEvent($event)"
         (editEvent)="onMovieEditEvent($event)">
     </tr>
     </tbody>

@@ -44,13 +44,6 @@ export class ToDoService {
   }
   /*************************/
 
-  deleteTodo(todoItem: ToDoItem) {
-    return this.http.delete<ToDoItem>(this.url + todoItem.id).subscribe(data => {
-      this.todoDataStore = this.todoDataStore.filter(ele => ele.id != todoItem.id);
-      this._todos.next(this.todoDataStore);
-    });
-  }
-
 
   addNewTodo(todoItem: ToDoItem) {
 
@@ -68,4 +61,12 @@ export class ToDoService {
         this._todos.next(this.todoDataStore);
       })
   }
+
+  deleteTodo(todoItem: ToDoItem) {
+    return this.http.delete<ToDoItem>(this.url + todoItem.id).subscribe(data => {
+      this.todoDataStore = this.todoDataStore.filter(ele => ele.id != todoItem.id);
+      this._todos.next(this.todoDataStore);
+    });
+  }
+
 }

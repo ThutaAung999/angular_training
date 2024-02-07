@@ -61,4 +61,12 @@ export class MovieService {
         this._movies.next(this.movieStore);
       })
   }
+
+  deleteMovie(movieDto: MovieDto) {
+    return this.http.delete<MovieDto>(API_URL + movieDto._id).subscribe(data => {
+      this.movieStore =this.movieStore.filter(ele=>ele._id!=movieDto._id)
+        this._movies.next(this.movieStore);
+    });
+  }
+
 }

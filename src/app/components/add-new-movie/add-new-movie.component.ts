@@ -269,7 +269,7 @@ export class AddNewMovieComponent {
 
 
       if(this.editMode){
-        
+
         this.childMovieDetails._id=this.childMovieDto._id;
 
         console.log('Edit mode',this.childMovieDto);
