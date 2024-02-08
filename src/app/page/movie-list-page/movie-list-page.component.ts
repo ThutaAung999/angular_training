@@ -42,17 +42,19 @@ export class MovieListPageComponent {
     //this.addNewMovie.movieForm.patchValue({...this.parentMovieDetails})
 
     console.log('this.parentMovieDetails.genres',this.parentMovieDetails.genres)
-    console.log('this.parentMovieDetails.actors',this.parentMovieDetails.actors)
-    console.log('this.parentMovieDetails.directors',this.parentMovieDetails.directors)
+    console.log('this.parentMovieDetails.actors',this.parentMovieDetails.actors.map(actor=>actor.name))
+    console.log('this.parentMovieDetails.directors',this.parentMovieDetails.directors.map(director=>director.name))
 
     //ng-multiselect-dropdown အတွက် update လုပ်ဖို့  form data ထည့်တာ့ အဓိက ဒီနေရမှာပြင်ရမှာ .
     this.addNewMovie.movieForm.patchValue({
       title:this.parentMovieDetails.title,
       year:this.parentMovieDetails.year,
       genres:[this.parentMovieDetails.genres],
-      actors:[this.parentMovieDetails.actors],
-      directors:[this.parentMovieDetails.directors],
+      actors:[this.parentMovieDetails.actors.map(actor=>actor.name)],
+      directors:[this.parentMovieDetails.directors.map(director=>director.name)],
     })
+
+//this.addNewMovie.movieForm.controls['actors'].setValue({name:this.addNewMovie.selectedActors1.map(actor=>actor.name)})
 
   }
 }

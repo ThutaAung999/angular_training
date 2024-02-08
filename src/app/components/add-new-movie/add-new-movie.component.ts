@@ -43,7 +43,7 @@ export class AddNewMovieComponent {
   selectedActors:Array<String> = [];
 */
   actors1:{}[]=[];
-  selectedActors1:{}[]=[];
+  selectedActors1:{id:number;name:string}[]=[];
 
   /*directors:Array<String>=[];
   selectedDirectors:Array<String> = [];
@@ -93,9 +93,9 @@ export class AddNewMovieComponent {
     this.movieForm = this.fb.group({
       title:['',[Validators.required]],
       year:[0,[Validators.required]],
-      genres:['',[Validators.required]],
-       actors:['',Validators.required],
-       directors:['',Validators.required],
+      genres:[[],[Validators.required]],
+       actors:[[],Validators.required],
+       directors:[[],Validators.required],
 
     });
 
